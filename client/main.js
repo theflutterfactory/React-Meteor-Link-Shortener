@@ -24,9 +24,7 @@ const unauthenticatedPages = ["/", "/signup"];
 const authenticatedPages = ["/links"];
 
 const onEnterLoginPage = () => {
-  console.log("onEnterLoginPage called");
   if (Meteor.userId()) {
-    console.log("pushing links");
     return <Redirect to="/links" />;
   } else {
     return <Login />;
@@ -34,9 +32,7 @@ const onEnterLoginPage = () => {
 };
 
 const onEnterSignupPage = () => {
-  console.log("onEnterSignupPage called");
   if (Meteor.userId()) {
-    console.log("pushing links");
     return <Redirect to="/links" />;
   } else {
     return <Signup />;
@@ -44,9 +40,7 @@ const onEnterSignupPage = () => {
 };
 
 const onEnterLinksPage = () => {
-  console.log("onEnterLinksPage called");
   if (Meteor.userId()) {
-    console.log("pushing links");
     return <Links />;
   } else {
     return <Redirect to="/" />;
