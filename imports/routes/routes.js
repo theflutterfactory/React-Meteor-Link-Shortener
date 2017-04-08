@@ -1,16 +1,6 @@
 import { Meteor } from "meteor/meteor";
 import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from "react-router-dom";
-
-import createHistory from "history/createBrowserHistory";
-const history = createHistory({
-  forceRefresh: true
-});
+import { Router, Route, browserHistory } from "react-router";
 
 import Login from "../ui/Login";
 import Signup from "../ui/Signup";
@@ -20,51 +10,49 @@ import NotFound from "../ui/NotFound";
 const unauthenticatedPages = ["/", "/signup"];
 const authenticatedPages = ["/links"];
 
-const onEnterLoginPage = () => {
+const onEnterPublicPage = () => {
   if (Meteor.userId()) {
-    return <Redirect to="/links" />;
-  } else {
-    return <Login />;
+    browserHistory.replace("/links");
   }
 };
 
-const onEnterSignupPage = () => {
-  if (Meteor.userId()) {
-    return <Redirect to="/links" />;
-  } else {
-    return <Signup />;
-  }
-};
-
-const onEnterLinksPage = () => {
-  if (Meteor.userId()) {
-    return <Links />;
-  } else {
-    return <Redirect to="/" />;
+const onEnterPrivatePage = () => {
+  if (!Meteor.userId()) {
+    browserHistory.replace("/");
   }
 };
 
 export const onAuthChange = isAuthenticated => {
-  const pathName = history.location.pathname;
+  const pathName = browserHistory.getCurrentLocation().pathname;
   const isUnAuthenticatedPage = unauthenticatedPages.includes(pathName);
   const isAuthenticatedPage = authenticatedPages.includes(pathName);
 
   if (isUnAuthenticatedPage && isAuthenticated) {
-    history.push("/links");
+    browserHistory.push("/links");
   } else if (isAuthenticatedPage && !isAuthenticated) {
-    history.push("/");
+    browserHistory.push("/");
   }
 
   console.log("isAuthenticated", isAuthenticated);
 };
 
 export const routes = (
-  <Router>
-    <Switch>
-      <Route exact path="/" render={onEnterLoginPage} />
-      <Route exact path="/signup" render={onEnterSignupPage} />
-      <Route exact path="/links" render={onEnterLinksPage} />
-      <Route component={NotFound} />
-    </Switch>
+  <Router history={browserHistory}>
+    <div>
+      <Route exact path="/" component={Login} onEnter={onEnterPublicPage} />
+      <Route
+        exact
+        path="/signup"
+        component={Signup}
+        onEnter={onEnterPublicPage}
+      />
+      <Route
+        exact
+        path="/links"
+        component={Links}
+        onEnter={onEnterPrivatePage}
+      />
+      <Route path="*" component={NotFound} />
+    </div>
   </Router>
 );
