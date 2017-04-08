@@ -11,10 +11,16 @@ export default class LinksList extends React.Component {
   }
 
   componentDidMount() {
-    Tracker.autorun(() => {
+    console.log("componentDidMount LL");
+    this.linksTracker = Tracker.autorun(() => {
       const links = LinksApi.find().fetch();
       this.setState({ links });
     });
+  }
+
+  componentWillUnmount() {
+    console.log("componentWillUnmount LL");
+    this.linksTracker.stop();
   }
 
   renderLinksListItems() {
