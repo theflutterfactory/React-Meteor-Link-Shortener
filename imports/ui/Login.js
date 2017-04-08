@@ -33,7 +33,7 @@ export default class Login extends React.Component {
         <h1>Link Shortener</h1>
         {this.state.error ? <p>{this.state.error}</p> : undefined}
 
-        <form onSubmit={this.onSubmit.bind(this)}>
+        <form onSubmit={this.onSubmit.bind(this)} noValidate>
           <input type="email" ref="emailRef" name="email" placeholder="Email" />
           <input
             type="password"
