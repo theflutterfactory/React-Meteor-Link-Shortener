@@ -2,20 +2,22 @@ import React from "react";
 import ClipBoard from "clipboard";
 
 export default class LinksListItem extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      justCopied: false
+    };
+  }
   componentDidMount() {
     this.clipboard = new ClipBoard(this.refs.copy);
 
     this.clipboard
-      .on("success", e => {
-        console.info("Action:", e.action);
-        console.info("Text:", e.text);
-        console.info("Trigger:", e.trigger);
-
-        e.clearSelection();
+      .on("success", () => {
+        this.setState({ justCopied: true });
+        setTimeout(() => this.setState({ justCopied: false }), 1000);
       })
       .on("error", e => {
-        console.error("Action:", e.action);
-        console.error("Trigger:", e.trigger);
+        alert("Unable to copy");
       });
   }
 
@@ -29,7 +31,7 @@ export default class LinksListItem extends React.Component {
         <p>{this.props.url}</p>
         <p>{this.props.shortUrl}</p>
         <button ref="copy" data-clipboard-text={this.props.shortUrl}>
-          Copy
+          {this.state.justCopied ? "Copied" : "Copy"}
         </button>
       </div>
     );
