@@ -1,5 +1,6 @@
 import { Mongo } from "meteor/mongo";
 import { Meteor } from "meteor/meteor";
+import SimpleSchema from "simpl-schema";
 
 export const LinksApi = new Mongo.Collection("links");
 
@@ -15,6 +16,18 @@ Meteor.methods({
     if (!this.userId) {
       //Prevents a user from inserting links if not logged int
       throw new Meteor.Error("not-authorized");
+    }
+
+    try {
+      new SimpleSchema({
+        url: {
+          type: String,
+          label: "Your link",
+          regEx: SimpleSchema.RegEx.Url
+        }
+      }).validate({ url });
+    } catch (e) {
+      throw new Meteor.Error(400, e.message);
     }
 
     LinksApi.insert({
