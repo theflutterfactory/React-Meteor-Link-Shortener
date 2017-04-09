@@ -4,7 +4,7 @@ import { Meteor } from "meteor/meteor";
 export const LinksApi = new Mongo.Collection("links");
 
 if (Meteor.isServer) {
-  Meteor.publish("linksPublication", () => {
-    return LinksApi.find();
+  Meteor.publish("linksPublication", function() {
+    return LinksApi.find({ userId: this.userId });
   });
 }
