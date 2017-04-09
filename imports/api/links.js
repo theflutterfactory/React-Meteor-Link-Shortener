@@ -1,6 +1,7 @@
 import { Mongo } from "meteor/mongo";
 import { Meteor } from "meteor/meteor";
 import SimpleSchema from "simpl-schema";
+import shortid from "shortid";
 
 export const LinksApi = new Mongo.Collection("links");
 
@@ -27,6 +28,7 @@ Meteor.methods({
     }).validate({ url });
 
     LinksApi.insert({
+      _id: shortid.generate(),
       url,
       userId: this.userId
     });
