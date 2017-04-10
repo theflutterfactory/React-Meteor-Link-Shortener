@@ -30,7 +30,29 @@ Meteor.methods({
     LinksApi.insert({
       _id: shortid.generate(),
       url,
-      userId: this.userId
+      userId: this.userId,
+      visible: true
     });
+  },
+  "links.setVisibility"(_id, visible) {
+    new SimpleSchema({
+      _id: {
+        type: String,
+        min: 1
+      },
+      visible: {
+        type: Boolean
+      }
+    }).validate({ _id, visible });
+
+    LinksApi.update(
+      {
+        _id,
+        userId: this.userId
+      },
+      {
+        $set: { visible }
+      }
+    );
   }
 });
