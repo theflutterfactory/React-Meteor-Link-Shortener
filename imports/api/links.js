@@ -6,7 +6,7 @@ import shortid from "shortid";
 export const LinksApi = new Mongo.Collection("links");
 
 if (Meteor.isServer) {
-  Meteor.publish("linksPublication", function() {
+  Meteor.publish("linksPublication", function () {
     //Find all links that belong to the currently logged in user
     return LinksApi.find({ userId: this.userId });
   });
@@ -45,12 +45,10 @@ Meteor.methods({
       }
     }).validate({ _id, visible });
 
-    LinksApi.update(
-      {
-        _id,
-        userId: this.userId
-      },
-      {
+    LinksApi.update({
+      _id,
+      userId: this.userId
+    }, {
         $set: { visible }
       }
     );
