@@ -1,4 +1,15 @@
-$boxed-view-overlay-bg: #DDDDDD;
+//Colors
+$grey: #DDDDDD;
+
+//Spacing
+$space: 1.4rem;
+
+//Boxed Views
+$boxed-view-overlay-bg: $grey;
 $boxed-view-bg: white;
 
+//Fonts
 $base-font-size: 1.6rem;
+
+//Form Inputs
+$input-border: $grey;
