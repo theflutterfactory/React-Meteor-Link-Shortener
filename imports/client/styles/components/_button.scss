@@ -4,12 +4,21 @@
   color: $button-color;
   cursor: pointer;
   font-size: $base-font-size;
-  padding: $input-spacing;
+  line-height: 1.2;
   margin-bottom: $space;
+  padding: $input-spacing;
   text-transform: uppercase;
 }
 
-.button--link{
+.button--link {
   display: inline-block;
   text-decoration: none;
+}
+
+.button--pill {
+   background-color: transparent;
+   border: 1px solid $button-pill-color;
+   color: $button-pill-color;
+   margin: 0 ($space / 2) 0 0;
+   padding: .3rem .8rem;
 }
