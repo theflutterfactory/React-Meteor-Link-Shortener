@@ -13,6 +13,10 @@
 .button--link {
   display: inline-block;
   text-decoration: none;
+  color: $button-pill-color;
+  padding: .3rem .8rem;
+  text-transform: uppercase;
+  text-decoration: underline;
 }
 
 .button--pill {
