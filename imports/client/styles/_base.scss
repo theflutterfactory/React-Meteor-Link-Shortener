@@ -3,7 +3,7 @@
   padding: 0;
 }
 
-html{
+html {
   font-size: 62.5%;
 }
 
@@ -17,6 +17,11 @@ h1 {
   margin-bottom: $space;
 }
 
+h2 {
+  font-size: $large-font-size;
+  margin-bottom: $space;
+}
+
 p {
   margin-bottom: $space;
 }
@@ -25,9 +30,13 @@ a {
   color: black;
 }
 
-input[type=text], input[type=email], input[type=password] {
-  border: 1px solid $input-border;
-  font-size: $base-font-size;
-  margin-bottom: $space;
-  padding: $input-spacing;
+input {
+  &[type='text'],
+  &[type='email'],
+  &[type='password'] {
+    border: 1px solid $input-border;
+    font-size: $base-font-size;
+    margin-bottom: $space;
+    padding: $input-spacing;
+  }
 }
