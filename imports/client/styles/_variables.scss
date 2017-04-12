@@ -1,12 +1,14 @@
 //Colors
-$grey: #DDDDDD;
+$grey: #ddd;
+$white: #fff;
+$color-primary: #5b4681;
 
 //Spacing
 $space: 1.4rem;
 
 //Boxed Views
 $boxed-view-overlay-bg: $grey;
-$boxed-view-bg: white;
+$boxed-view-bg: $white;
 
 //Fonts
 $base-font-size: 1.6rem;
@@ -16,6 +18,8 @@ $input-border: $grey;
 $input-spacing: 1rem;
 
 //Button
-$button-bg: #5B4681;
-$button-color: white;
-$button-pill-color: #5B4681;
+$button-bg: $color-primary;
+$button-secondary-bg: #f9f9f9;
+$button-color: $white;
+$button-secondary-color: #777;
+$button-pill-color: $color-primary;

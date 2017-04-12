@@ -1,6 +1,6 @@
 .button {
   background-color: $button-bg;
-  border: none;
+  border: 0;
   color: $button-color;
   cursor: pointer;
   font-size: $base-font-size;
@@ -16,9 +16,15 @@
 }
 
 .button--pill {
-   background-color: transparent;
-   border: 1px solid $button-pill-color;
-   color: $button-pill-color;
-   margin: 0 ($space / 2) 0 0;
-   padding: .3rem .8rem;
+  background-color: transparent;
+  border: 1px solid $button-pill-color;
+  color: $button-pill-color;
+  margin: 0 ($space / 2) 0 0;
+  padding: .3rem .8rem;
+}
+
+.button--secondary {
+  background: $button-secondary-bg;
+  border: 1px solid $grey;
+  color: $button-secondary-color;
 }
