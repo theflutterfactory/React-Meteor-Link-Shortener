@@ -29,9 +29,11 @@ export default class Login extends React.Component {
 
   render() {
     return (
+
       <div className="boxed-view">
+        <h1 className="title hvr-shrink">Wee Link</h1>
         <div className="boxed-view--box" >
-          <h1>Link Shortener</h1>
+          <h1>Login</h1>
           {this.state.error ? <p>{this.state.error}</p> : undefined}
 
           <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view--form">
@@ -42,7 +44,7 @@ export default class Login extends React.Component {
               name="password"
               placeholder="Password"
             />
-            <button className="button hvr-grow">Login</button>
+            <button className="button hvr-grow">Let Me In!</button>
           </form>
           <Link to="/signup">Don't have an account? Signup</Link>
         </div>

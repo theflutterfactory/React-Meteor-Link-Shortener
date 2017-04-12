@@ -34,8 +34,9 @@ export default class Signup extends React.Component {
   render() {
     return (
       <div className="boxed-view">
+        <h1 className="title hvr-shrink">Wee Link</h1>
         <div className="boxed-view--box" >
-          <h1>Join Link Shortener</h1>
+          <h1>Join</h1>
           {this.state.error ? <p>{this.state.error}</p> : undefined}
 
           <form onSubmit={this.onSubmit.bind(this)} noValidate className="boxed-view--form">

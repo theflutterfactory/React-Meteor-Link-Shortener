@@ -3,6 +3,7 @@
   background: $boxed-view-overlay-bg;
   display: flex;
   height: 100vh;
+  flex-direction: column;
   justify-content: center;
   width: 100vw;
 }
@@ -19,6 +20,7 @@
 .boxed-view--box {
   background-color: $boxed-view-bg;
   padding: 2.4rem;
+  margin-top: 6rem;
   text-align: center;
   width: 36rem;
 }
