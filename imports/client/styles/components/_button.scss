@@ -28,3 +28,11 @@
   border: 1px solid $grey;
   color: $button-secondary-color;
 }
+
+.button--link-text {
+  background: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: underline;
+  text-transform: none;
+}

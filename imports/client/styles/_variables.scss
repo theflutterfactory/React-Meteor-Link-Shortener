@@ -5,6 +5,7 @@ $color-primary: #5b4681;
 
 //Spacing
 $space: 1.4rem;
+$site-max-width: 50rem;
 
 //Boxed Views
 $boxed-view-overlay-bg: $grey;
@@ -23,3 +24,7 @@ $button-secondary-bg: #f9f9f9;
 $button-color: $white;
 $button-secondary-color: #777;
 $button-pill-color: $color-primary;
+
+//Header
+$header-bg: $color-primary;
+$header-color: $white;
